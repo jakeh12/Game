@@ -53,7 +53,8 @@ void Window::update()
     float currentFrame = glfwGetTime();
     float deltaTime = currentFrame - lastFrame;
     if (deltaTime < msPerFrame) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(msPerFrame - (int)(deltaTime * 1000)));
+        // TODO: figure out if deltaTime is seconds or ms.. do appropriate math here
+        //std::this_thread::sleep_for(std::chrono::milliseconds(msPerFrame - (int)(deltaTime)));
     }
     lastFrame = currentFrame;
 
