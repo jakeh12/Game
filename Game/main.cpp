@@ -11,41 +11,24 @@
 #include "Renderer.hpp"
 #include "StaticShader.hpp"
 
+#include "TestCube.h"
+
 int main(int argc, const char * argv[]) {
-    Window window("Test");
+    Window window("Game");
     Loader loader;
     StaticShader shader;
     Renderer renderer(shader);
     
-    std::vector<GLfloat> vertices = {
-        -0.5f,  0.5f,  0.0f, // v0
-        -0.5f, -0.5f,  0.0f, // v1
-         0.5f, -0.5f,  0.0f, // v2
-         0.5f,  0.5f,  0.0f, // v3
-    };
-    
-    std::vector<GLuint> indices = {
-        0, 1, 3, // top triangle
-        3, 1, 2  // bottom triangle
-    };
-    
-    std::vector<GLfloat> textureCoordinates = {
-        0.0f, 0.0f, // v0
-        0.0f, 1.0f, // v1
-        1.0f, 1.0f, // v2
-        1.0f, 0.0f  // v3
-    };
-    
     RawModel model = loader.loadToVao(vertices, textureCoordinates, indices);
     TexturedModel staticModel(model, ModelTexture(loader.loadTexture("textures/awesomeface.png")));
-    Entity entity(staticModel, glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), 1.0f);
+    Entity entity(staticModel, glm::vec3(1.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, 0.0f), 1.0f);
     
     Camera camera(window);
     
     while(!window.isCloseRequested())
     {
-        entity.translate(glm::vec3(0.0f, 0.0f, -0.1f));
-        entity.rotate(glm::vec3(0.0f, 0.0f, 0.05f));
+        entity.translate(glm::vec3(0.0f, 0.0f, -0.01f));
+        entity.rotate(glm::vec3(0.0f, 0.0f, 0.02f));
         
         camera.move();
         renderer.prepare();

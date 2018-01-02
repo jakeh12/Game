@@ -19,6 +19,10 @@ void Camera::move()
     {
         position.z -= 0.2f;
     }
+    if (window.isKeyDown(GLFW_KEY_S))
+    {
+        position.z += 0.2f;
+    }
     if (window.isKeyDown(GLFW_KEY_D))
     {
         position.x += 0.2f;
