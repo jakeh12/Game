@@ -15,8 +15,8 @@ int main(int argc, const char * argv[]) {
     
     Window window("Test");
     Loader loader;
-    Renderer renderer;
     StaticShader shader;
+    Renderer renderer(shader);
     
     std::vector<GLfloat> vertices = {
         -0.5f,  0.5f,  0.0f, // v0
@@ -39,11 +39,11 @@ int main(int argc, const char * argv[]) {
     
     RawModel model = loader.loadToVao(vertices, textureCoordinates, indices);
     TexturedModel staticModel(model, ModelTexture(loader.loadTexture("textures/awesomeface.png")));
-    Entity entity(staticModel, glm::vec3(-0.4f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 20.0f), 0.5f);
+    Entity entity(staticModel, glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), 1.0f);
     
     while(!window.isCloseRequested())
     {
-        entity.translate(glm::vec3(0.005f, 0.0f, 0.0f));
+        entity.translate(glm::vec3(0.0f, 0.0f, -0.1f));
         entity.rotate(glm::vec3(0.0f, 0.0f, 0.05f));
         
         renderer.prepare();

@@ -18,9 +18,11 @@ class StaticShader : public ShaderProgram
 {
 private:
     GLuint transformationMatrixLocation;
+    GLuint projectionMatrixLocation;
 public:
     StaticShader();
     void loadTransformationMatrix(glm::mat4 matrix);
+    void loadProjectionMatrix(glm::mat4 matrix);
 };
 
 #endif /* StaticShader_hpp */

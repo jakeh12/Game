@@ -8,6 +8,13 @@
 
 #include "Renderer.hpp"
 
+Renderer::Renderer(StaticShader &shader)
+{
+    createProjectionMatrix();
+    shader.start();
+    shader.loadProjectionMatrix(projectionMatrix);
+    shader.stop();
+}
 
 void Renderer::prepare()
 {
@@ -32,4 +39,9 @@ void Renderer::render(Entity &entity, StaticShader &shader)
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glBindVertexArray(0);
+}
+
+void Renderer::createProjectionMatrix()
+{
+    projectionMatrix = glm::perspective(glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f);
 }

@@ -11,9 +11,15 @@
 StaticShader::StaticShader() : ShaderProgram("shaders/vertex_shader.glsl", "shaders/fragment_shader.glsl")
 {
     transformationMatrixLocation = getUniformLocation("transformationMatrix");
+    projectionMatrixLocation = getUniformLocation("projectionMatrix");
 }
 
 void StaticShader::loadTransformationMatrix(glm::mat4 matrix)
 {
     loadMatrix(transformationMatrixLocation, matrix);
+}
+
+void StaticShader::loadProjectionMatrix(glm::mat4 matrix)
+{
+    loadMatrix(projectionMatrixLocation, matrix);
 }
