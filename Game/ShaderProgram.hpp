@@ -20,7 +20,6 @@ class ShaderProgram
     GLuint programId;
     GLuint vertexShaderId;
     GLuint fragmentShaderId;
-    
 public:
     ShaderProgram(std::string vertexPath, std::string fragmentPath);
     void start();

@@ -11,13 +11,13 @@
 
 #include <glad/glad.h>
 #include "RawModel.hpp"
+#include "TexturedModel.hpp"
 
 class Renderer
 {
-    
 public:
     void prepare();
-    void render(RawModel &model);
+    void render(TexturedModel &model);
 };
 
 #endif /* Renderer_hpp */

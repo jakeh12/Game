@@ -12,18 +12,22 @@
 #include "RawModel.hpp"
 #include <vector>
 #include <glad/glad.h>
+#include <iostream>
+#include "stb_image.h"
 
 class Loader
 {
     std::vector<GLuint> vaos;
     std::vector<GLuint> vbos;
+    std::vector<GLuint> textures;
     
     GLuint createVao();
-    void storeDataInAttributeList(int attributeNumber, const std::vector<GLfloat>& data);
+    void storeDataInAttributeList(int attributeNumber, int coordinateSize, const std::vector<GLfloat>& data);
     void unbindVao();
     void bindIndicesBuffer(const std::vector<GLuint>& indices);
 public:
-    RawModel loadToVao(const std::vector<GLfloat>& positions, const std::vector<GLuint>& indices);
+    RawModel loadToVao(const std::vector<GLfloat>& positions, const std::vector<GLfloat>& textureCoordinates, const std::vector<GLuint>& indices);
+    GLuint loadTexture(std::string path);
     ~Loader();
 };
 

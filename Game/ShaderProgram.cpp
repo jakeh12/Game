@@ -17,8 +17,6 @@ ShaderProgram::ShaderProgram(std::string vertexPath, std::string fragmentPath)
     glAttachShader(programId, fragmentShaderId);
     glLinkProgram(programId);
     glValidateProgram(programId);
-    
-    // TODO: attach uniforms here? virtual and have implementations?
 }
 
 void ShaderProgram::start()

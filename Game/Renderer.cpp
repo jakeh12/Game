@@ -15,11 +15,16 @@ void Renderer::prepare()
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
 
-void Renderer::render(RawModel &model)
+void Renderer::render(TexturedModel &texturedModel)
 {
+    RawModel model(texturedModel.getRawModel());
     glBindVertexArray(model.getVaoId());
     glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texturedModel.getModelTexture().getId());
     glDrawElements(GL_TRIANGLES, model.getVertexCount(), GL_UNSIGNED_INT, (GLvoid *)(0));
     glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
     glBindVertexArray(0);
 }
