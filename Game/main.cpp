@@ -19,18 +19,19 @@ int main(int argc, const char * argv[]) {
     
     ShaderProgram shaderProgram("shaders/vertex_shader.glsl", "shaders/fragment_shader.glsl");
     
-    std::vector<float> vertices = {
-        // left bottom triangle
-        -0.5f,  0.5f,  0.0f,
-        -0.5f, -0.5f,  0.0f,
-        0.5f, -0.5f,  0.0f,
-        // right top triangle
-        0.5f, -0.5f, 0.0f,
-        0.5f,  0.5f, 0.0f,
-        -0.5f,  0.5f, 0.0f
+    std::vector<GLfloat> vertices = {
+        -0.5f,  0.5f,  0.0f, // v0
+        -0.5f, -0.5f,  0.0f, // v1
+         0.5f, -0.5f,  0.0f, // v2
+         0.5f,  0.5f,  0.0f, // v3
     };
     
-    RawModel model = loader.loadToVao(vertices);
+    std::vector<GLuint> indices = {
+        0, 1, 3, // top
+        3, 1, 2  // bottom
+    };
+    
+    RawModel model = loader.loadToVao(vertices, indices);
     
     while(!window.isCloseRequested())
     {

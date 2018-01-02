@@ -19,10 +19,11 @@ class Loader
     std::vector<GLuint> vbos;
     
     GLuint createVao();
-    void storeDataInAttributeList(int attributeNumber, const std::vector<float>& data);
+    void storeDataInAttributeList(int attributeNumber, const std::vector<GLfloat>& data);
     void unbindVao();
+    void bindIndicesBuffer(const std::vector<GLuint>& indices);
 public:
-    RawModel loadToVao(const std::vector<float>& positions);
+    RawModel loadToVao(const std::vector<GLfloat>& positions, const std::vector<GLuint>& indices);
     ~Loader();
 };
 
