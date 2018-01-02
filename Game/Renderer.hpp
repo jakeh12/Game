@@ -10,14 +10,15 @@
 #define Renderer_hpp
 
 #include <glad/glad.h>
-#include "RawModel.hpp"
-#include "TexturedModel.hpp"
+#include "Entity.hpp"
+#include "StaticShader.hpp"
+#include "utils.hpp"
 
 class Renderer
 {
 public:
     void prepare();
-    void render(TexturedModel &model);
+    void render(Entity &entity, StaticShader &shader);
 };
 
 #endif /* Renderer_hpp */

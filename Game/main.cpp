@@ -9,14 +9,14 @@
 #include "Window.hpp"
 #include "Loader.hpp"
 #include "Renderer.hpp"
-#include "ShaderProgram.hpp"
+#include "StaticShader.hpp"
 
 int main(int argc, const char * argv[]) {
     
     Window window("Test");
     Loader loader;
     Renderer renderer;
-    ShaderProgram shaderProgram("shaders/vertex_shader.glsl", "shaders/fragment_shader.glsl");
+    StaticShader shader;
     
     std::vector<GLfloat> vertices = {
         -0.5f,  0.5f,  0.0f, // v0
@@ -38,15 +38,19 @@ int main(int argc, const char * argv[]) {
     };
     
     RawModel model = loader.loadToVao(vertices, textureCoordinates, indices);
-    ModelTexture texture(loader.loadTexture("textures/awesomeface.png"));
-    TexturedModel texturedModel(model, texture);
+    TexturedModel staticModel(model, ModelTexture(loader.loadTexture("textures/awesomeface.png")));
+    Entity entity(staticModel, glm::vec3(-0.4f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 20.0f), 0.5f);
     
     while(!window.isCloseRequested())
     {
+        entity.translate(glm::vec3(0.005f, 0.0f, 0.0f));
+        entity.rotate(glm::vec3(0.0f, 0.0f, 0.05f));
+        
         renderer.prepare();
-        shaderProgram.start();
-        renderer.render(texturedModel);
-        shaderProgram.stop();
+        shader.start();
+        renderer.render(entity, shader);
+        shader.stop();
+        
         window.update();
     }
     

@@ -11,8 +11,8 @@
 
 #include "RawModel.hpp"
 #include <vector>
+#include <string>
 #include <glad/glad.h>
-#include <iostream>
 #include "stb_image.h"
 
 class Loader

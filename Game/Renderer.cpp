@@ -15,15 +15,20 @@ void Renderer::prepare()
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
 
-void Renderer::render(TexturedModel &texturedModel)
+void Renderer::render(Entity &entity, StaticShader &shader)
 {
-    RawModel model(texturedModel.getRawModel());
-    glBindVertexArray(model.getVaoId());
+    TexturedModel model = entity.getModel();
+    RawModel rawModel(model.getRawModel());
+    glBindVertexArray(rawModel.getVaoId());
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
+    
+    glm::mat4 transformationMatrix = createTransformationMatrix(entity.getPosition(), entity.getRotation(), entity.getScale());
+    shader.loadTransformationMatrix(transformationMatrix);
+    
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texturedModel.getModelTexture().getId());
-    glDrawElements(GL_TRIANGLES, model.getVertexCount(), GL_UNSIGNED_INT, (GLvoid *)(0));
+    glBindTexture(GL_TEXTURE_2D, model.getModelTexture().getId());
+    glDrawElements(GL_TRIANGLES, rawModel.getVertexCount(), GL_UNSIGNED_INT, (GLvoid *)(0));
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glBindVertexArray(0);

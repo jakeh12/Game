@@ -31,7 +31,6 @@ void ShaderProgram::stop()
 
 GLuint ShaderProgram::loadShader(std::string path, GLenum type)
 {
-    
     std::ifstream inputFileStream;
     inputFileStream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
     std::string fileContentString;
@@ -79,6 +78,33 @@ ShaderProgram::~ShaderProgram()
     glDeleteShader(vertexShaderId);
     glDeleteShader(fragmentShaderId);
     glDeleteProgram(programId);
-    
+}
+
+GLuint ShaderProgram::getUniformLocation(std::string uniformName)
+{
+    return glGetUniformLocation(programId, uniformName.c_str());
+}
+
+void ShaderProgram::loadBoolean(GLuint location, bool value)
+{
+    GLboolean toLoad = GL_FALSE;
+    if (value)
+        toLoad = GL_TRUE;
+    glUniform1ui(location, toLoad);
+}
+
+void ShaderProgram::loadFloat(GLuint location, GLfloat value)
+{
+    glUniform1f(location, value);
+}
+
+void ShaderProgram::loadVector(GLuint location, glm::vec3 vector)
+{
+    glUniform3f(location, vector.x, vector.y, vector.z);
+}
+
+void ShaderProgram::loadMatrix(GLuint location, glm::mat4 matrix)
+{
+    glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
