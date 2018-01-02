@@ -63,6 +63,10 @@ void Window::update()
     
     // poll events
     glfwPollEvents();
+    
+    // check if escape is pressed
+    if (isKeyDown(GLFW_KEY_ESCAPE))
+        requestClose();
 }
 
 Window::~Window()
@@ -78,4 +82,11 @@ int Window::isCloseRequested()
 void Window::requestClose()
 {
     glfwSetWindowShouldClose(window, true);
+}
+
+bool Window::isKeyDown(int key)
+{
+    if (glfwGetKey(window, key) == GLFW_PRESS)
+        return true;
+    return false;
 }

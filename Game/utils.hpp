@@ -14,7 +14,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #pragma clang diagnostic pop
+#include "Camera.hpp"
 
 glm::mat4 createTransformationMatrix(glm::vec3 position, glm::vec3 rotation, GLfloat scale);
+glm::mat4 createViewMatrix(Camera &camera);
 
 #endif /* utils_hpp */

@@ -12,7 +12,6 @@
 #include "StaticShader.hpp"
 
 int main(int argc, const char * argv[]) {
-    
     Window window("Test");
     Loader loader;
     StaticShader shader;
@@ -41,13 +40,17 @@ int main(int argc, const char * argv[]) {
     TexturedModel staticModel(model, ModelTexture(loader.loadTexture("textures/awesomeface.png")));
     Entity entity(staticModel, glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), 1.0f);
     
+    Camera camera(window);
+    
     while(!window.isCloseRequested())
     {
         entity.translate(glm::vec3(0.0f, 0.0f, -0.1f));
         entity.rotate(glm::vec3(0.0f, 0.0f, 0.05f));
         
+        camera.move();
         renderer.prepare();
         shader.start();
+        shader.loadViewMatrix(camera);
         renderer.render(entity, shader);
         shader.stop();
         

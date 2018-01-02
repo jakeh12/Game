@@ -13,16 +13,20 @@
 #pragma clang diagnostic ignored "-Wdocumentation"
 #include <glm/glm.hpp>
 #pragma clang diagnostic pop
+#include "Camera.hpp"
+#include "utils.hpp"
 
 class StaticShader : public ShaderProgram
 {
 private:
     GLuint transformationMatrixLocation;
     GLuint projectionMatrixLocation;
+    GLuint viewMatrixLocation;
 public:
     StaticShader();
     void loadTransformationMatrix(glm::mat4 matrix);
     void loadProjectionMatrix(glm::mat4 matrix);
+    void loadViewMatrix(Camera &camera);
 };
 
 #endif /* StaticShader_hpp */

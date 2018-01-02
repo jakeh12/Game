@@ -18,3 +18,12 @@ glm::mat4 createTransformationMatrix(glm::vec3 position, glm::vec3 rotation, GLf
     matrix = glm::scale(matrix, glm::vec3(scale));
     return matrix;
 }
+
+glm::mat4 createViewMatrix(Camera &camera) {
+    glm::mat4 matrix;
+    matrix = glm::rotate(matrix, glm::radians(camera.getPitch()), glm::vec3(1.0f, 0.0f, 0.0f));
+    matrix = glm::rotate(matrix, glm::radians(camera.getYaw()), glm::vec3(0.0f, 1.0f, 0.0f));
+    matrix = glm::translate(matrix, -camera.getPosition());
+    return matrix;
+}
+

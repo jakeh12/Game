@@ -19,6 +19,7 @@
 
 class Window
 {
+private:
     GLFWwindow* window;
     float sPerFrame;
 public:
@@ -27,6 +28,7 @@ public:
     ~Window();
     int isCloseRequested();
     void requestClose();
+    bool isKeyDown(int key);
 };
 
 #endif /* Window_hpp */
