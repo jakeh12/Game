@@ -20,7 +20,7 @@
 class Window
 {
     GLFWwindow* window;
-    int msPerFrame;
+    float sPerFrame;
 public:
     Window(std::string title, int width = 800, int height = 600, int framerate = 60);
     void update();

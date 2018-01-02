@@ -17,7 +17,7 @@ class Loader
 {
     std::vector<GLuint> vaos;
     std::vector<GLuint> vbos;
-
+    
     GLuint createVao();
     void storeDataInAttributeList(int attributeNumber, const std::vector<float>& data);
     void unbindVao();

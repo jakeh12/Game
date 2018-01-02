@@ -43,7 +43,7 @@ Window::Window(std::string title, int width, int height, int framerate)
     }
     
     // set up frame rate cap
-    msPerFrame = (int)((1.0f / framerate) * 1000);
+    sPerFrame = 1.0f / framerate;
 }
 
 void Window::update()
@@ -52,12 +52,12 @@ void Window::update()
     static float lastFrame = 0.0f;
     float currentFrame = glfwGetTime();
     float deltaTime = currentFrame - lastFrame;
-    if (deltaTime < msPerFrame) {
+    if (deltaTime < sPerFrame) {
         // TODO: figure out if deltaTime is seconds or ms.. do appropriate math here
-        //std::this_thread::sleep_for(std::chrono::milliseconds(msPerFrame - (int)(deltaTime)));
+        std::this_thread::sleep_for(std::chrono::milliseconds((int)((sPerFrame - deltaTime) * 1000)));
     }
     lastFrame = currentFrame;
-
+    
     // swap buffers
     glfwSwapBuffers(window);
     

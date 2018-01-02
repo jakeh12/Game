@@ -23,8 +23,8 @@ void Loader::storeDataInAttributeList(int attributeNumber, const std::vector<flo
     glGenBuffers(1, &vboId);
     vbos.push_back(vboId);
     glBindBuffer(GL_ARRAY_BUFFER, vboId);
-    glBufferData(GL_ARRAY_BUFFER,  data.size() * sizeof(float), &data[0], GL_STATIC_DRAW);
-    glVertexAttribPointer(attributeNumber, 3, GL_FLOAT, GL_FALSE, sizeof(float), (GLvoid*)(0));
+    glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), &data[0], GL_STATIC_DRAW);
+    glVertexAttribPointer(attributeNumber, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)(0));
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 

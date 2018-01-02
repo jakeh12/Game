@@ -14,6 +14,7 @@
 		67CC85A41FFAD68A0074BB0F /* RawModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67CC85A21FFAD68A0074BB0F /* RawModel.cpp */; };
 		67CC85A71FFAD9300074BB0F /* Loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67CC85A51FFAD9300074BB0F /* Loader.cpp */; };
 		67CC85AA1FFAE5240074BB0F /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67CC85A81FFAE5240074BB0F /* Renderer.cpp */; };
+		67CC85B31FFB02970074BB0F /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67CC85B11FFB02970074BB0F /* ShaderProgram.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,10 @@
 		67CC85A61FFAD9300074BB0F /* Loader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Loader.hpp; sourceTree = "<group>"; };
 		67CC85A81FFAE5240074BB0F /* Renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
 		67CC85A91FFAE5240074BB0F /* Renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
+		67CC85AE1FFAF6130074BB0F /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment_shader.glsl; sourceTree = "<group>"; };
+		67CC85AF1FFAF6130074BB0F /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shader.glsl; sourceTree = "<group>"; };
+		67CC85B11FFB02970074BB0F /* ShaderProgram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgram.cpp; sourceTree = "<group>"; };
+		67CC85B21FFB02970074BB0F /* ShaderProgram.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 		67CC85921FFAC8CF0074BB0F /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				67CC85AD1FFAF6130074BB0F /* shaders */,
 				67CC859D1FFAC9A80074BB0F /* glad.c */,
 				67CC85931FFAC8CF0074BB0F /* main.cpp */,
 				67CC85A21FFAD68A0074BB0F /* RawModel.cpp */,
@@ -85,6 +91,8 @@
 				67CC85A31FFAD68A0074BB0F /* RawModel.hpp */,
 				67CC859F1FFAC9F90074BB0F /* Window.cpp */,
 				67CC85A01FFAC9F90074BB0F /* Window.hpp */,
+				67CC85B11FFB02970074BB0F /* ShaderProgram.cpp */,
+				67CC85B21FFB02970074BB0F /* ShaderProgram.hpp */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -95,6 +103,15 @@
 				67CC859B1FFAC8F00074BB0F /* libglfw.3.2.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67CC85AD1FFAF6130074BB0F /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				67CC85AE1FFAF6130074BB0F /* fragment_shader.glsl */,
+				67CC85AF1FFAF6130074BB0F /* vertex_shader.glsl */,
+			);
+			path = shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67CC85AA1FFAE5240074BB0F /* Renderer.cpp in Sources */,
+				67CC85B31FFB02970074BB0F /* ShaderProgram.cpp in Sources */,
 				67CC85A41FFAD68A0074BB0F /* RawModel.cpp in Sources */,
 				67CC85A71FFAD9300074BB0F /* Loader.cpp in Sources */,
 				67CC85941FFAC8CF0074BB0F /* main.cpp in Sources */,
