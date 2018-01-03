@@ -10,8 +10,7 @@
 #include "Loader.hpp"
 #include "Renderer.hpp"
 #include "StaticShader.hpp"
-
-#include "TestCube.h"
+#include "ObjLoader.hpp"
 
 int main(int argc, const char * argv[]) {
     Window window("Game");
@@ -19,16 +18,17 @@ int main(int argc, const char * argv[]) {
     StaticShader shader;
     Renderer renderer(shader);
     
-    RawModel model = loader.loadToVao(vertices, textureCoordinates, indices);
-    TexturedModel staticModel(model, ModelTexture(loader.loadTexture("textures/awesomeface.png")));
-    Entity entity(staticModel, glm::vec3(1.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, 0.0f), 1.0f);
+    ObjLoader objLoader;
+    RawModel model = objLoader.loadObjModel("models/stall/stall.obj", loader);
+    TexturedModel staticModel(model, ModelTexture(loader.loadTexture("models/stall/stall.png")));
+    Entity entity(staticModel, glm::vec3(0.0f, -3.0f, -10.0f), glm::vec3(glm::radians(0.0f), glm::radians(180.0f), glm::radians(0.0f)), 1.0f);
     
     Camera camera(window);
     
     while(!window.isCloseRequested())
     {
-        entity.translate(glm::vec3(0.0f, 0.0f, -0.01f));
-        entity.rotate(glm::vec3(0.0f, 0.0f, 0.02f));
+        entity.translate(glm::vec3(0.0f, 0.0f, -0.02f));
+        entity.rotate(glm::vec3(0.0f, -0.01f, 0.0f));
         
         camera.move();
         renderer.prepare();
