@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67785D4A1FFEA04000270BF7 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67785D481FFEA04000270BF7 /* Light.cpp */; };
 		67B34E5A1FFB9D68008E3AD9 /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67B34E591FFB9D68008E3AD9 /* stb_image.cpp */; };
 		67B34E911FFBC62E008E3AD9 /* ModelTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67B34E8F1FFBC62E008E3AD9 /* ModelTexture.cpp */; };
 		67B34E941FFBC71F008E3AD9 /* TexturedModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67B34E921FFBC71F008E3AD9 /* TexturedModel.cpp */; };
@@ -38,6 +39,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		67785D421FFD554F00270BF7 /* dragon.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = dragon.obj; sourceTree = "<group>"; };
+		67785D471FFE9F1C00270BF7 /* dragon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragon.png; sourceTree = "<group>"; };
+		67785D481FFEA04000270BF7 /* Light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
+		67785D491FFEA04000270BF7 /* Light.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Light.hpp; sourceTree = "<group>"; };
 		67B34E581FFB9D68008E3AD9 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		67B34E591FFB9D68008E3AD9 /* stb_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image.cpp; sourceTree = "<group>"; };
 		67B34E8F1FFBC62E008E3AD9 /* ModelTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ModelTexture.cpp; sourceTree = "<group>"; };
@@ -86,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67785D411FFD554300270BF7 /* dragon */ = {
+			isa = PBXGroup;
+			children = (
+				67785D471FFE9F1C00270BF7 /* dragon.png */,
+				67785D421FFD554F00270BF7 /* dragon.obj */,
+			);
+			path = dragon;
+			sourceTree = "<group>";
+		};
 		67CC85871FFAC8CF0074BB0F = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +122,8 @@
 			children = (
 				67E69DE91FFC2A5E000190D2 /* Camera.cpp */,
 				67E69DEA1FFC2A5E000190D2 /* Camera.hpp */,
+				67785D481FFEA04000270BF7 /* Light.cpp */,
+				67785D491FFEA04000270BF7 /* Light.hpp */,
 				67B34EA01FFC0ABA008E3AD9 /* Entity.cpp */,
 				67B34EA11FFC0ABA008E3AD9 /* Entity.hpp */,
 				67CC859D1FFAC9A80074BB0F /* glad.c */,
@@ -160,6 +176,7 @@
 		67E69DF01FFC42BD000190D2 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				67785D411FFD554300270BF7 /* dragon */,
 				67E69DF11FFC42C2000190D2 /* stall */,
 			);
 			path = models;
@@ -233,6 +250,7 @@
 			files = (
 				67CC85AA1FFAE5240074BB0F /* Renderer.cpp in Sources */,
 				67B34E9C1FFC0285008E3AD9 /* StaticShader.cpp in Sources */,
+				67785D4A1FFEA04000270BF7 /* Light.cpp in Sources */,
 				67E69DEB1FFC2A5E000190D2 /* Camera.cpp in Sources */,
 				67B34E5A1FFB9D68008E3AD9 /* stb_image.cpp in Sources */,
 				67B34E941FFBC71F008E3AD9 /* TexturedModel.cpp in Sources */,

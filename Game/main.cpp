@@ -19,20 +19,21 @@ int main(int argc, const char * argv[]) {
     Renderer renderer(shader);
     
     ObjLoader objLoader;
-    RawModel model = objLoader.loadObjModel("models/stall/stall.obj", loader);
-    TexturedModel staticModel(model, ModelTexture(loader.loadTexture("models/stall/stall.png")));
-    Entity entity(staticModel, glm::vec3(0.0f, -3.0f, -10.0f), glm::vec3(glm::radians(0.0f), glm::radians(180.0f), glm::radians(0.0f)), 1.0f);
-    
+    RawModel model = objLoader.loadObjModel("models/dragon/dragon.obj", loader);
+    TexturedModel staticModel(model, ModelTexture(loader.loadTexture("models/dragon/dragon.png")));
+    Entity entity(staticModel, glm::vec3(0.0f, -4.0f, -15.0f), glm::vec3(glm::radians(0.0f), glm::radians(180.0f), glm::radians(0.0f)), 1.0f);
+    Light light(glm::vec3(0.0f, 0.0f, -10.0f), glm::vec3(1.0f, 1.0f, 1.0f));
     Camera camera(window);
     
     while(!window.isCloseRequested())
     {
-        entity.translate(glm::vec3(0.0f, 0.0f, -0.02f));
+        entity.translate(glm::vec3(0.0f, 0.0f, -0.01f));
         entity.rotate(glm::vec3(0.0f, -0.01f, 0.0f));
         
         camera.move();
         renderer.prepare();
         shader.start();
+        shader.loadLight(light);
         shader.loadViewMatrix(camera);
         renderer.render(entity, shader);
         shader.stop();

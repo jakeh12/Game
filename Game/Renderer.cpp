@@ -30,6 +30,7 @@ void Renderer::render(Entity &entity, StaticShader &shader)
     glBindVertexArray(rawModel.getVaoId());
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
     
     glm::mat4 transformationMatrix = createTransformationMatrix(entity.getPosition(), entity.getRotation(), entity.getScale());
     shader.loadTransformationMatrix(transformationMatrix);
@@ -39,6 +40,8 @@ void Renderer::render(Entity &entity, StaticShader &shader)
     glDrawElements(GL_TRIANGLES, rawModel.getVertexCount(), GL_UNSIGNED_INT, (GLvoid *)(0));
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(2);
+
     glBindVertexArray(0);
 }
 

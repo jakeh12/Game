@@ -14,9 +14,15 @@
 class ModelTexture
 {
     GLuint textureId;
+    GLfloat shineDamper = 1.0f;
+    GLfloat reflectivity = 0.0f;
 public:
     ModelTexture(GLuint textureId);
     GLuint getId();
+    GLfloat getShineDamper();
+    void setShineDamper(GLfloat shineDamper_);
+    GLfloat getReflectivity();
+    void setReflectivity(GLfloat reflectivity_);
 };
 
 #endif /* ModelTexture_hpp */

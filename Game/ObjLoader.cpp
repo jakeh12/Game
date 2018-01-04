@@ -136,6 +136,6 @@ RawModel ObjLoader::loadObjModel(std::string path, Loader &loader)
         }
     }
     
-    return loader.loadToVao(vertexBuffer, textureCoordinateBuffer, indexBuffer);
+    return loader.loadToVao(vertexBuffer, textureCoordinateBuffer, normalBuffer, indexBuffer);
 }
 

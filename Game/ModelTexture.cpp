@@ -17,3 +17,20 @@ GLuint ModelTexture::getId()
 {
     return textureId;
 }
+
+GLfloat ModelTexture::getShineDamper()
+{
+    return shineDamper;
+}
+void ModelTexture::setShineDamper(GLfloat shineDamper_)
+{
+    shineDamper = shineDamper_;
+}
+GLfloat ModelTexture::getReflectivity()
+{
+    return reflectivity;
+}
+void ModelTexture::setReflectivity(GLfloat reflectivity_)
+{
+    reflectivity = reflectivity_;
+}

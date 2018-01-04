@@ -42,12 +42,13 @@ void Loader::bindIndicesBuffer(const std::vector<GLuint>& indices)
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), &indices[0], GL_STATIC_DRAW);
 }
 
-RawModel Loader::loadToVao(const std::vector<GLfloat>& positions, const std::vector<GLfloat>& textureCoordinates, const std::vector<GLuint>& indices)
+RawModel Loader::loadToVao(const std::vector<GLfloat>& positions, const std::vector<GLfloat>& textureCoordinates,  const std::vector<GLfloat>& normals, const std::vector<GLuint>& indices)
 {
     GLuint vaoId = createVao();
     bindIndicesBuffer(indices);
     storeDataInAttributeList(0, 3, positions);
     storeDataInAttributeList(1, 2, textureCoordinates);
+    storeDataInAttributeList(2, 3, normals);
     unbindVao();
     RawModel model(vaoId, (GLuint)(indices.size()));
     return model;

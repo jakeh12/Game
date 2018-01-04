@@ -26,7 +26,7 @@ class Loader
     void unbindVao();
     void bindIndicesBuffer(const std::vector<GLuint>& indices);
 public:
-    RawModel loadToVao(const std::vector<GLfloat>& positions, const std::vector<GLfloat>& textureCoordinates, const std::vector<GLuint>& indices);
+    RawModel loadToVao(const std::vector<GLfloat>& positions, const std::vector<GLfloat>& textureCoordinates,  const std::vector<GLfloat>& normals, const std::vector<GLuint>& indices);
     GLuint loadTexture(std::string path);
     ~Loader();
 };

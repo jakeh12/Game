@@ -13,6 +13,8 @@ StaticShader::StaticShader() : ShaderProgram("shaders/vertex_shader.glsl", "shad
     transformationMatrixLocation = getUniformLocation("transformationMatrix");
     projectionMatrixLocation = getUniformLocation("projectionMatrix");
     viewMatrixLocation = getUniformLocation("viewMatrix");
+    lightPositionLocation = getUniformLocation("lightPosition");
+    lightColorLocation = getUniformLocation("lightColor");
 }
 
 void StaticShader::loadTransformationMatrix(glm::mat4 matrix)
@@ -28,4 +30,11 @@ void StaticShader::loadProjectionMatrix(glm::mat4 matrix)
 void StaticShader::loadViewMatrix(Camera &camera)
 {
     loadMatrix(viewMatrixLocation, createViewMatrix(camera));
+}
+
+void StaticShader::loadLight(Light &light)
+{
+    loadVector(lightPositionLocation, light.getPosition());
+    loadVector(lightColorLocation, light.getColor());
+
 }
