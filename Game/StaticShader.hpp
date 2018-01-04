@@ -25,12 +25,15 @@ private:
     GLuint viewMatrixLocation;
     GLuint lightPositionLocation;
     GLuint lightColorLocation;
+    GLuint shineDamperLocation;
+    GLuint reflectivityLocation;
 public:
     StaticShader();
     void loadTransformationMatrix(glm::mat4 matrix);
     void loadProjectionMatrix(glm::mat4 matrix);
     void loadViewMatrix(Camera &camera);
     void loadLight(Light &light);
+    void loadShineVariables(GLfloat shineDamper, GLfloat reflectivity);
 };
 
 #endif /* StaticShader_hpp */

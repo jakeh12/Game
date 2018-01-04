@@ -15,6 +15,8 @@ StaticShader::StaticShader() : ShaderProgram("shaders/vertex_shader.glsl", "shad
     viewMatrixLocation = getUniformLocation("viewMatrix");
     lightPositionLocation = getUniformLocation("lightPosition");
     lightColorLocation = getUniformLocation("lightColor");
+    shineDamperLocation = getUniformLocation("shineDamper");
+    reflectivityLocation = getUniformLocation("reflectivity");
 }
 
 void StaticShader::loadTransformationMatrix(glm::mat4 matrix)
@@ -37,4 +39,10 @@ void StaticShader::loadLight(Light &light)
     loadVector(lightPositionLocation, light.getPosition());
     loadVector(lightColorLocation, light.getColor());
 
+}
+
+void StaticShader::loadShineVariables(GLfloat shineDamper, GLfloat reflectivity)
+{
+    loadFloat(shineDamperLocation, shineDamper);
+    loadFloat(reflectivityLocation, reflectivity);
 }

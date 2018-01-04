@@ -20,7 +20,7 @@ void Renderer::prepare()
 {
     glEnable(GL_DEPTH_TEST);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 }
 
 void Renderer::render(Entity &entity, StaticShader &shader)
@@ -35,6 +35,8 @@ void Renderer::render(Entity &entity, StaticShader &shader)
     glm::mat4 transformationMatrix = createTransformationMatrix(entity.getPosition(), entity.getRotation(), entity.getScale());
     shader.loadTransformationMatrix(transformationMatrix);
     
+    ModelTexture texture = model.getModelTexture();
+    shader.loadShineVariables(texture.getShineDamper(), texture.getReflectivity());
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, model.getModelTexture().getId());
     glDrawElements(GL_TRIANGLES, rawModel.getVertexCount(), GL_UNSIGNED_INT, (GLvoid *)(0));

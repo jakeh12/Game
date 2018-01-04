@@ -20,7 +20,10 @@ int main(int argc, const char * argv[]) {
     
     ObjLoader objLoader;
     RawModel model = objLoader.loadObjModel("models/dragon/dragon.obj", loader);
-    TexturedModel staticModel(model, ModelTexture(loader.loadTexture("models/dragon/dragon.png")));
+    ModelTexture texture = loader.loadTexture("models/dragon/dragon.png");
+    texture.setShineDamper(10.0f);
+    texture.setReflectivity(1.0f);
+    TexturedModel staticModel(model, texture);
     Entity entity(staticModel, glm::vec3(0.0f, -4.0f, -15.0f), glm::vec3(glm::radians(0.0f), glm::radians(180.0f), glm::radians(0.0f)), 1.0f);
     Light light(glm::vec3(0.0f, 0.0f, -10.0f), glm::vec3(1.0f, 1.0f, 1.0f));
     Camera camera(window);

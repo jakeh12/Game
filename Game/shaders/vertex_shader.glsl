@@ -6,7 +6,8 @@ layout(location = 2) in vec3 normals;
 
 out vec2 passTextureCoordinates;
 out vec3 surfaceNormal;
-out vec3 toLight;
+out vec3 toLightVector;
+out vec3 toCameraVector;
 
 uniform mat4 transformationMatrix;
 uniform mat4 projectionMatrix;
@@ -20,5 +21,6 @@ void main()
     passTextureCoordinates = textureCoordinates;
     
     surfaceNormal = (transformationMatrix * vec4(normals, 0.0)).xyz;
-    toLight = lightPosition - worldPosition.xyz;
+    toLightVector = lightPosition - worldPosition.xyz;
+    toCameraVector = (inverse(viewMatrix) * vec4(0.0, 0.0, 0.0, 1.0)).xyz - worldPosition.xyz;
 }
